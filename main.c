@@ -130,10 +130,11 @@ int main(int argc, char** argv)
 
         //RASCUNHO
         //printf("\n\n<RASCUNHO>\n\n");
+/*
         for(int j=0; j<9;j++){
             switch(j){
                 case 0:
-                    pic.img[cont].r = bit8;
+                    pic.img[cont].r = (pic.img[count].r << 0) | (bit8 << 0);
                     cont++;
                     break;
                 case 1:
@@ -169,7 +170,7 @@ int main(int argc, char** argv)
                     break;
             }
         }
-        //printf("\n\n</RASCUNHO>\n\n");
+*/
 
 
     }
@@ -179,13 +180,44 @@ int main(int argc, char** argv)
     }
     printf("\n\n");
 
+
+    char x = 'x';
+    char buffer[8];
+    printf("################### TESTE ###################\n\n");
+    printf("Valor x: %c\n", x);
+
+    bit8 = (x >> 7) & 0x01;
+    bit7 = (x >> 6) & 0x01;
+    bit6 = (x >> 5) & 0x01;
+    bit5 = (x >> 4) & 0x01;
+    bit4 = (x >> 3) & 0x01;
+    bit3 = (x >> 2) & 0x01;
+    bit2 = (x >> 1) & 0x01;
+    bit1 = (x >> 0) & 0x01;
+
+    printf("Bit8: %d \nBit7: %d \nBit6: %d \nBit5: %d \nBit4: %d \nBit3: %d \nBit2: %d \nBit1: %d\n", bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1);
+
+
+    printf("\nPixel original: [ %02X %02X %02X ]\n\n ", pic.img[0].r, pic.img[0].g, pic.img[0].b);
+
+    printf("Bit Novo: %d ", bit6);
+
+    itoa(pic.img[0].r,buffer,2);
+    printf("\nBuffer: %s\n ", buffer);
+
+    pic.img[0].r = (pic.img[0].r << 1) | bit6;//Empurra os bits do pixel para direita e coloca o novo bit no final
+
+    itoa(pic.img[0].r,buffer,2);
+    printf("\nBuffer: %s\n ", buffer);
+
+    printf("Pixel alterado: [ %02X %02X %02X ]\n\n", pic.img[0].r, pic.img[0].g, pic.img[0].b);
+
+
     SOIL_save_image("saida.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height, 3, pic.img);
 
     free(pic.img);
 
 }
-
-
 /*
 
 /*

@@ -227,3 +227,11 @@
 
 1504289654 c:\users\andré marques\source\linguagemc\trabalho 1 psb\estenografia\lib\soil\stbi_dds_aug_c.h
 
+1557276373 source:c:\users\andré marques\source\linguagemc\trabalho 1 psb\estenografia\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"SOIL.h"
+
+1504289654 c:\users\andré marques\source\linguagemc\trabalho 1 psb\estenografia\soil.h
+
