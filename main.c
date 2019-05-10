@@ -187,35 +187,35 @@ void decrypt(int password, char** argv){
         if(contCarac < 9){
            switch(contCarac){
                 case 0:
-                    bit8 = (pic.img[cont].r >> 0);
+                    bit8 = (pic.img[cont].r >> 1)  & 0x01;
                     salta(password);
                     break;
                 case 1:
-                    bit7 = (pic.img[cont].r >> 0);
+                    bit7 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
                 case 2:
-                    bit6 = (pic.img[cont].r >> 0);
+                    bit6 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
                 case 3:
-                    bit5 = (pic.img[cont].r >> 0);
+                    bit5 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
                 case 4:
-                    bit4 = (pic.img[cont].r >> 0);
+                    bit4 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
                 case 5:
-                    bit3 = (pic.img[cont].r >> 0);
+                    bit3 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
                 case 6:
-                    bit2 = (pic.img[cont].r >> 0);
+                    bit2 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
                 case 7:
-                    bit1 = (pic.img[cont].r >> 0);
+                    bit1 = (pic.img[cont].r >> 1) & 0x01;
                     salta(password);
                     break;
 
@@ -247,7 +247,7 @@ void decrypt(int password, char** argv){
 
 int main(int argc, char** argv)
 {
-    encrypt(1, "aa", argc, argv);
+    encrypt(1, "a", argc, argv);
     //char message[300] = "a";
     decrypt(1, argv);
 
