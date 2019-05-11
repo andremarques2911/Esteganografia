@@ -209,49 +209,49 @@ void decrypt(int password, char** argv){
 
     cont = 0;
     int contCarac = 0;
-    for(int i = 0; i < pic.height*pic.width; i++){
-
+    for(int i = 0; i < 9; i++){
         //printf("\n\nCont: %d\n", cont);
         //printf("ContCaractere: %d\n\n", contCarac);
-        if(contCarac == 8){
+        if(contCarac == 7) {
             contCarac = 0;
         }
-        switch(contCarac){
-             case 0:
-                 bit8 = (pic.img[cont].r >> 0)  & 0x01;
-                 salta(password);
-                 break;
-             case 1:
-                bit7 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
-             case 2:
-                 bit6 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
-             case 3:
-                 bit5 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
-             case 4:
-                 bit4 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
-             case 5:
-                 bit3 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
-             case 6:
-                 bit2 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
-             case 7:
-                 bit1 = (pic.img[cont].r >> 0) & 0x01;
-                 salta(password);
-                 break;
 
-             default:
-                 break;
+        switch(contCarac){
+            case 0:
+                bit8 = (pic.img[cont].r >> 0)  & 0x01;
+                salta(password);
+                break;
+            case 1:
+               bit7 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+            case 2:
+                bit6 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+            case 3:
+                bit5 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+            case 4:
+                bit4 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+            case 5:
+                bit3 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+            case 6:
+                bit2 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+            case 7:
+                bit1 = (pic.img[cont].r >> 0) & 0x01;
+                salta(password);
+                break;
+
+            default:
+                break;
         }
         contCarac++;
     }
