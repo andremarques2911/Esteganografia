@@ -17,6 +17,14 @@ typedef struct {
 } Img;
 
 int cont = 0; //Responsavel pelo controle do index dos pixels da imagem
+char bit1 = 0;
+char bit2 = 0;
+char bit3 = 0;
+char bit4 = 0;
+char bit5 = 0;
+char bit6 = 0;
+char bit7 = 0;
+char bit8 = 0;
 
 // Protótipos
 void load(char* name, Img* pic);
@@ -55,14 +63,7 @@ void encrypt(int password, char message[], int argc, char** argv)
 
     char caractereAtual; //Armazena o caractere atual da mensagem
 
-    char bit1 = 0;
-    char bit2 = 0;
-    char bit3 = 0;
-    char bit4 = 0;
-    char bit5 = 0;
-    char bit6 = 0;
-    char bit7 = 0;
-    char bit8 = 0;
+
     //Usando Cifra de Cesar. Somando 3 letras.
     for(int i = 0; i < strlen(message); i++) {
         caractereAtual = message[i];
@@ -168,111 +169,111 @@ void encrypt(int password, char message[], int argc, char** argv)
     printf("Bit8: %d \nBit7: %d \nBit6: %d \nBit5: %d \nBit4: %d \nBit3: %d \nBit2: %d \nBit1: %d\n\n\n", bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1);
 
     printf("BUSCANDO LETRA CRIPTOGRAFADA NA IMAGEM EM BINARIO\n");
-    bit8 = (pic.img[0].r >> 1)  & 0x01;
-    bit8 = (pic.img[1].r >> 1)  & 0x01;
-    bit8 = (pic.img[2].r >> 1)  & 0x01;
-    bit8 = (pic.img[3].r >> 1)  & 0x01;
-    bit8 = (pic.img[4].r >> 1)  & 0x01;
-    bit8 = (pic.img[5].r >> 1)  & 0x01;
-    bit8 = (pic.img[6].r >> 1)  & 0x01;
-    bit8 = (pic.img[7].r >> 1)  & 0x01;
+    bit8 = (pic.img[0].r >> 0)  & 0x01;
+    bit8 = (pic.img[1].r >> 0)  & 0x01;
+    bit8 = (pic.img[2].r >> 0)  & 0x01;
+    bit8 = (pic.img[3].r >> 0)  & 0x01;
+    bit8 = (pic.img[4].r >> 0)  & 0x01;
+    bit8 = (pic.img[5].r >> 0)  & 0x01;
+    bit8 = (pic.img[6].r >> 0)  & 0x01;
+    bit8 = (pic.img[7].r >> 0)  & 0x01;
 
     printf("Bit8: %d \nBit7: %d \nBit6: %d \nBit5: %d \nBit4: %d \nBit3: %d \nBit2: %d \nBit1: %d\n\n\n", bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1);
+
+
+    bit8 = 0;
+    bit7 = 0;
+    bit6 = 0;
+    bit5 = 0;
+    bit4 = 0;
+    bit3 = 0;
+    bit2 = 0;
+    bit1 = 0;
 
     SOIL_save_image("saida.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height, 3, pic.img);
 
     free(pic.img);
 }
 
-
 void decrypt(int password, char** argv){
     printf("\n\nDESCRIPTOGRAFANDO...\n\n");
 
 
-    char *message;
-    message = malloc(300);
+    char* message = calloc(300, sizeof message);
     printf("\n\nPassword: %d\n\n", password);
     Img pic;
 
-    load(argv[1], &pic);
+    load("saida.bmp", &pic);
 
     char caractereDescoberto[7];
 
-    char bit1 = 0;
-    char bit2 = 0;
-    char bit3 = 0;
-    char bit4 = 0;
-    char bit5 = 0;
-    char bit6 = 0;
-    char bit7 = 0;
-    char bit8 = 0;
-
     cont = 0;
     int contCarac = 0;
-    for(int i = 0; i < 9; i++){
-        printf("\n\nCont: %d\n", cont);
-        printf("ContCaractere: %d\n\n", contCarac);
-        if(contCarac < 9){
-           switch(contCarac){
-                case 0:
-                    bit8 = (pic.img[cont].r << 0)  & 0x01;
-                    salta(password);
-                    break;
-                case 1:
-                    bit7 = (pic.img[cont].r << 0) & 0x01;
-                    salta(password);
-                    break;
-                case 2:
-                    bit6 = (pic.img[cont].r << 0) & 0x01;
-                    salta(password);
-                    break;
-                case 3:
-                    bit5 = (pic.img[cont].r << 0) & 0x01;
-                    salta(password);
-                    break;
-                case 4:
-                    bit4 = (pic.img[cont].r << 0) & 0x01;
-                    salta(password);
-                    break;
-                case 5:
-                    bit3 = (pic.img[cont].r << 0) & 0x01;
-                    salta(password);
-                    break;
-                case 6:
-                    bit2 = (pic.img[cont].r << 0) & 0x01;
-                    salta(password);
-                    break;
-                case 7:
-                    bit1 = (pic.img[cont].r << 1) & 0x01;
-                    salta(password);
-                    break;
+    for(int i = 0; i < pic.height*pic.width; i++){
 
-                default:
-                    break;
-            }
-            contCarac++;
-
+        //printf("\n\nCont: %d\n", cont);
+        //printf("ContCaractere: %d\n\n", contCarac);
+        if(contCarac == 8){
+            contCarac = 0;
         }
-        printf("Bit8: %d \nBit7: %d \nBit6: %d \nBit5: %d \nBit4: %d \nBit3: %d \nBit2: %d \nBit1: %d\n\n\n", bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1);
+        switch(contCarac){
+             case 0:
+                 bit8 = (pic.img[cont].r >> 0)  & 0x01;
+                 salta(password);
+                 break;
+             case 1:
+                bit7 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
+             case 2:
+                 bit6 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
+             case 3:
+                 bit5 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
+             case 4:
+                 bit4 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
+             case 5:
+                 bit3 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
+             case 6:
+                 bit2 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
+             case 7:
+                 bit1 = (pic.img[cont].r >> 0) & 0x01;
+                 salta(password);
+                 break;
 
-        message[0] = bit8;
-        message[1] = bit7;
-        message[2] = bit6;
-        message[3] = bit5;
-        message[4] = bit4;
-        message[5] = bit3;
-        message[6] = bit2;
-        message[7] = bit1;
-
+             default:
+                 break;
+        }
+        contCarac++;
     }
+
+    printf("\nMensagem descriptografada em binario: \n");
+
+    printf("Bit8: %d \nBit7: %d \nBit6: %d \nBit5: %d \nBit4: %d \nBit3: %d \nBit2: %d \nBit1: %d\n\n\n", bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1);
+
+    //bit8 + bit7 + bit6 + bit5, bit4 + bit3 + bit2 + bit1;
+    //printf("\nVALOR M: %d\n\n", m);
+
     printf("\n\nMENSAGEM CRIPTOGRAFADA: %s\n\n", message);
 
+
+    free(message);
 }
 
 int main(int argc, char** argv)
 {
     encrypt(1, "a", argc, argv);
     //char message[300] = "a";
+
     decrypt(1, argv);
 
 }
