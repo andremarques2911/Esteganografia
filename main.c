@@ -219,7 +219,7 @@ void decrypt(int password, int passwordLength, char** argv) {
     printf("DESCRIPTOGRAFANDO...\n\n");
 
     char* message = calloc(300, sizeof message);
-    char* messageCriptografada = calloc(300, sizeof message);
+    char* messageCriptografada = calloc(300, sizeof messageCriptografada);
     printf("\nPassword: %d\n\n", password);
     Img pic;
 
@@ -322,8 +322,10 @@ void decrypt(int password, int passwordLength, char** argv) {
 }
 
 int main(int argc, char** argv) {
-    encrypt(1, "pussy", argc, argv);
-    decrypt(1, 5, argv);
+
+    char* message = "pussy is life";
+    encrypt(40, message, argc, argv);
+    decrypt(40, strlen(message), argv);
 }
 /*
 
