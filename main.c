@@ -285,21 +285,19 @@ void decrypt(int password, char** argv) {
 //    TODO - devemos de alguma maneira montar a letra atraves do binário
 //    TODO - devemos remover 3 no binário da letra aqui antes de exibi-la
 
-    printf("\nLETRA DESCRIPTOGRAFADA EM BINARIO RECUPERADA DA IMAGEM:\n");
-
-    printf("Bit8: %d \nBit7: %d \nBit6: %d \nBit5: %d \nBit4: %d \nBit3: %d \nBit2: %d \nBit1: %d\n\n\n", bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1);
+    char m = (bit8 << 7) + (bit7 << 6) + (bit6 << 5) + (bit5 << 4) + (bit4 << 3) + (bit3 << 2) + (bit2 << 1) + (bit1 << 0);
 
     //bit8 + bit7 + bit6 + bit5, bit4 + bit3 + bit2 + bit1;
-    //printf("\nVALOR M: %d\n\n", m);
+    printf("\nVALOR M: %c\n\n", m);
+    message[0] = m;
 
-
-//    printf("MENSAGEM CRIPTOGRAFADA: %s\n\n", message);
+    printf("MENSAGEM CRIPTOGRAFADA: %s\n\n", message);
 
     free(message);
 }
 
 int main(int argc, char** argv) {
-    encrypt(1, "pussy", argc, argv);
+    encrypt(1, "a", argc, argv);
     decrypt(1, argv);
 }
 /*
