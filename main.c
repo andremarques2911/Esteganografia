@@ -40,8 +40,15 @@ void load(char* name, Img* pic) {
 }
 
 // Algoritmo de salto entre pixels
-void salta(int senha) {
-    cont += senha;
+void salta(char* password) {
+    int salto = 0;
+    for(int i=0; i<strlen(password); i++) {
+        salto += password[i];
+    }
+
+    salto /= strlen(password);
+
+    cont += salto;
 }
 
 void encrypt(int password, char message[], int argc, char** argv) {
@@ -324,8 +331,9 @@ void decrypt(int password, int passwordLength, char** argv) {
 int main(int argc, char** argv) {
 
     char* message = "pussy is life";
-    encrypt(40, message, argc, argv);
-    decrypt(40, strlen(message), argv);
+    encrypt("admin", message, argc, argv);
+    decrypt("admin", strlen(message), argv);
+
 }
 /*
 
