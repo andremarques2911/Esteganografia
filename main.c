@@ -273,13 +273,14 @@ int main(int argc, char** argv) {
 
     char* password = calloc(50, sizeof password);
     char* message = calloc(300, sizeof message);
-
+/*
     printf("Senha:", password);
     scanf("%s", password);
     printf("Mensagem:", message);
     scanf("%s", message);
+*/
 
-    encrypt(password, message, argc, argv);
-    decrypt(password, strlen(message), argv);
+    encrypt("testesenh@grande", "frase teste de limite", argc, argv);
+    decrypt("testesenh@grande", 21, argv);
 
 }
