@@ -32,8 +32,11 @@ char bit8 = 0;
 void load(char* name, Img* pic);
 void salta(char* password);
 void encrypt(char* password, char message[], int argc, char** argv);
-char* passwordInput();
 char* cifrar(char* message);
+char* passwordInput();
+char* messageInput();
+
+
 
 // CARREGA UMA IMAGEM PARA A STRUCT IMG
 void load(char* name, Img* pic) {
@@ -69,10 +72,6 @@ void encrypt(char* password, char message[], int argc, char** argv) {
     //ARMAZENA A MENSAGEM APOS A CIFRA DE CESAR
     char* mensagemCriptografada = calloc(300, sizeof mensagemCriptografada);
 
-    printf("\n");
-    printf("CRIPTOGRAFANDO...");
-    printf("\n");
-
     // ARMAZENA O CARACTERE ATUAL DA MENSAGEM
     char caractereAtual;
 
@@ -82,16 +81,12 @@ void encrypt(char* password, char message[], int argc, char** argv) {
         mensagemCriptografada[i] = caractereAtual + 3;
     }
 
-    printf("MENSAGEM DESCRIPTOGRAFADA: ");
-    printf("%s\n", message);
-    printf("MENSAGEM CRIPTOGRAFADA: ");
-    printf("%s\n", mensagemCriptografada);
+    //printf("MENSAGEM DESCRIPTOGRAFADA: ");
+    //printf("%s\n", message);
+    //printf("MENSAGEM CRIPTOGRAFADA: ");
+    //printf("%s\n", mensagemCriptografada);
 
     // ESTEGANOGRAFANDO IMAGEM
-    printf("\n");
-    printf("Estaganografando imagem...");
-    printf("\n");
-
     // CARREGA A IMAGEM EM PIC
     Img pic;
     if(argc < 1) {
@@ -158,18 +153,9 @@ void encrypt(char* password, char message[], int argc, char** argv) {
     pic.img[cont].r = 0x23;
     // LIMPANDO OS BITS
     bit8 = 0;bit7 = 0;bit6 = 0;bit5 = 0;bit4 = 0;bit3 = 0;bit2 = 0;bit1 = 0;
-    printf("\n");
-    printf("Imagem estenografada!");
-    printf("\n");
 
-    printf("\n");
-    printf("Salvando imagem...");
-    printf("\n");
     // SALVANDO A IMAGEM CRIPTOGRAFADA
-    SOIL_save_image("../estenografia-decrypt/saida.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height, 1, pic.img);
-    printf("\n");
-    printf("Imagem salva!");
-    printf("\n");
+    SOIL_save_image("../decrypt/saida.bmp", SOIL_SAVE_TYPE_BMP, pic.width, pic.height, 3, pic.img);
 
     free(pic.img);
 }

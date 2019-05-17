@@ -66,8 +66,6 @@ char* decifrar(char* message){
 }
 
 void decrypt(int password, char** argv) {
-    printf("DESCRIPTOGRAFANDO...\n");
-
     char* message = calloc(300, sizeof message);
     char* messageCriptografada = calloc(300, sizeof messageCriptografada);
 
