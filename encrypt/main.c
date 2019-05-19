@@ -159,6 +159,7 @@ void encrypt(char* password, char message[], int argc, char** argv) {
     printf("\nMensagem salva na imagem com sucesso!\n");
 }
 
+// SOLICITA A SENHA PARA O USUARIO
 char* passwordInput() {
     char* password = calloc(50, sizeof password);
     printf("Senha:", password);
@@ -177,6 +178,7 @@ char* passwordInput() {
     return password;
 }
 
+// SOLICITA MENSAGEM PARA O USUARIO
 char* messageInput() {
     char* message = calloc(300, sizeof message);
     printf("Mensagem:", message);

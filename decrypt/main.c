@@ -119,6 +119,7 @@ void decrypt(int password, char** argv) {
     free(pic.img);
 }
 
+// SOLICITA SENHA PARA O USUARIO
 char* passwordInput() {
     char* password = calloc(50, sizeof password);
     printf("Senha:", password);
